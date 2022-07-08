@@ -1,9 +1,15 @@
-import './App.css';
+import { useData } from "context";
+import { List } from "components";
+import "./App.css";
 
 function App() {
+  const { state } = useData();
+
   return (
     <div className="App">
-      <h1>Hello</h1>
+      {state.map((item) => (
+        <List id={item.id} {...item} />
+      ))}
     </div>
   );
 }
