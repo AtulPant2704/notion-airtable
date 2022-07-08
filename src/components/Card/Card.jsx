@@ -21,7 +21,6 @@ const Card = ({
 
   const dragStartHandler = (e) => {
     dragItem.current = e.target;
-    dragItem.current.addEventListener("dragend", dragEndHandler);
     setDragItemIndex({ listIndex, cardIndex });
     setTimeout(() => {
       setIsDragging(true);
@@ -29,7 +28,6 @@ const Card = ({
   };
 
   const dragEndHandler = () => {
-    dragItem.current.removeEventListener("dragend", dragEndHandler);
     dragItem.current = null;
     setIsDragging(false);
     setDragItemIndex(null);
@@ -42,7 +40,6 @@ const Card = ({
         payload: {
           dragItemIndex,
           dropItemIndex: { listIndex, cardIndex },
-          from: "card",
         },
       });
       setDragItemIndex({ listIndex, cardIndex });
@@ -75,7 +72,7 @@ const Card = ({
         } ${isDragging ? "card-dragging" : ""}`}
         onClick={() => setDisplayCardModal(true)}
         onDragStart={dragStartHandler}
-        // onDragEnd={dragEndHandler}
+        onDragEnd={dragEndHandler}
         onDragEnter={list.cards.length ? dragEnterHandler : null}
       >
         {title}

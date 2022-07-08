@@ -45,7 +45,6 @@ const List = ({
                 payload: {
                   dragItemIndex,
                   dropItemIndex: { listIndex, cardIndex: 0 },
-                  from: "list",
                 },
               })
             : null
