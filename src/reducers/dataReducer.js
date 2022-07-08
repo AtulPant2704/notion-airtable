@@ -3,6 +3,7 @@ import {
   editCardHandler,
   deleteCardHandler,
   dragAndDropHandler,
+  deleteListHandler,
 } from "utils";
 
 const dataReducer = (state, action) => {
@@ -21,8 +22,11 @@ const dataReducer = (state, action) => {
     }
     case "DRAG_AND_DROP": {
       const { dragItemIndex, dropItemIndex } = action.payload;
-      console.log(action.payload.from);
       return dragAndDropHandler(state, dragItemIndex, dropItemIndex);
+    }
+    case "DELETE_LIST": {
+      const { listId } = action.payload;
+      return deleteListHandler(state, listId);
     }
     default:
       return state;
