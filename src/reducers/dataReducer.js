@@ -4,6 +4,7 @@ import {
   deleteCardHandler,
   dragAndDropHandler,
   deleteListHandler,
+  addListHandler,
 } from "utils";
 
 const dataReducer = (state, action) => {
@@ -27,6 +28,10 @@ const dataReducer = (state, action) => {
     case "DELETE_LIST": {
       const { listId } = action.payload;
       return deleteListHandler(state, listId);
+    }
+    case "ADD_NEW_LIST": {
+      const { listName } = action.payload;
+      return addListHandler(state, listName);
     }
     default:
       return state;
