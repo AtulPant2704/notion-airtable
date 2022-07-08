@@ -3,6 +3,7 @@ import { useData } from "context";
 import { Card } from "components";
 import "./List.css";
 import { ListPopover } from "components/ListPopover/ListPopover";
+import { useEffect } from "react";
 
 const List = ({
   id,
@@ -12,7 +13,7 @@ const List = ({
   dragItemIndex,
   setDragItemIndex,
 }) => {
-  const { dispatch } = useData();
+  const { state, dispatch } = useData();
   const [displayCardInput, setDisplayCardInput] = useState(false);
   const [cardName, setCardName] = useState("");
   const [displayListPopover, setDisplayListPopover] = useState(false);
@@ -28,6 +29,10 @@ const List = ({
       addNewCard();
     }
   };
+
+  useEffect(() => {
+    setDisplayListPopover(false);
+  }, [state]);
 
   return (
     <>
