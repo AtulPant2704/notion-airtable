@@ -1,4 +1,5 @@
 .card-title {
+  background-color: white;
   font-size: 0.9rem;
   font-weight: 700;
   padding: 7px;
@@ -11,4 +12,8 @@
 
 .card-title-invalid {
   color: gray;
+}
+
+.card-dragging {
+  opacity: 0;
 }

@@ -3,7 +3,14 @@ import { useData } from "context";
 import { Card } from "components";
 import "./List.css";
 
-const List = ({ id, name, cards }) => {
+const List = ({
+  id,
+  name,
+  cards,
+  listIndex,
+  dragItemIndex,
+  setDragItemIndex,
+}) => {
   const { dispatch } = useData();
   const [displayCardInput, setDisplayCardInput] = useState(false);
   const [cardName, setCardName] = useState("");
@@ -22,14 +29,36 @@ const List = ({ id, name, cards }) => {
 
   return (
     <>
-      <div className="list">
+      <div
+        className="list"
+        onDragEnter={() =>
+          !cards.length
+            ? dispatch({
+                type: "DRAG_AND_DROP",
+                payload: {
+                  dragItemIndex,
+                  dropItemIndex: { listIndex, cardIndex: 0 },
+                  from: "list",
+                },
+              })
+            : null
+        }
+      >
         <div className="list-heading">
           <p className="list-name">{name}</p>
           <p className="list-card-count">{cards.length}</p>
         </div>
         <div className="list-body">
-          {cards.map((card) => (
-            <Card id={card.id} {...card} listId={id} />
+          {cards.map((card, index) => (
+            <Card
+              id={card.id}
+              {...card}
+              listId={id}
+              listIndex={listIndex}
+              cardIndex={index}
+              dragItemIndex={dragItemIndex}
+              setDragItemIndex={setDragItemIndex}
+            />
           ))}
         </div>
         <div className="list-footer">
