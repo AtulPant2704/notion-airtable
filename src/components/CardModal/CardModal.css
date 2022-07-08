@@ -1,0 +1,54 @@
+.backdrop {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  cursor: pointer;
+}
+
+.card-modal {
+  position: fixed;
+  height: fit-content;
+  max-height: 80%;
+  width: 60%;
+  background-color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  padding: 1rem 2rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.card-modal-title {
+  border-width: 0;
+  font-size: 1.5rem;
+  font-weight: 800;
+  display: block;
+  outline: none;
+}
+
+.card-status-select {
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+
+.card-description {
+  display: block;
+  width: 100%;
+  margin-top: 2rem;
+  border-width: 0;
+  resize: none;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
