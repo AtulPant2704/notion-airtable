@@ -1,0 +1,19 @@
+.list-popover {
+  width: 10rem;
+  height: fit-content;
+  background-color: white;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  border: 1px solid gray;
+}
+
+.color-item {
+  list-style: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.color-item:nth-of-type(1) {
+  font-weight: 700;
+}
