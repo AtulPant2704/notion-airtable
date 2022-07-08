@@ -1,0 +1,51 @@
+.list {
+  min-width: 15rem;
+  margin-top: 2rem;
+}
+
+.list:first-of-type {
+  margin-left: 2rem;
+}
+
+.list-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.9rem;
+}
+
+.list-name,
+.list-card-count {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.list-name {
+  background-color: lightblue;
+  padding: 0 5px;
+  border-radius: 2px;
+}
+
+.list-card-count {
+  color: gray;
+}
+
+.list-new-card-btn {
+  border-width: 0;
+  background-color: transparent;
+  color: gray;
+  cursor: pointer;
+}
+
+.card-input {
+  min-width: 15rem;
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 7px;
+  margin: 0;
+  margin-bottom: 0.5rem;
+  border: 1px solid lightgrey;
+  box-shadow: 1px 2px rgba(0, 0, 0, 0.1);
+}
