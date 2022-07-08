@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { useData } from "context";
-import { List } from "components";
+import { List, NewListModal } from "components";
 import "./App.css";
 
 function App() {
   const { state } = useData();
   const [dragItemIndex, setDragItemIndex] = useState(null);
+  const [displayListModal, setDisplayListModal] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("data", JSON.stringify(state));
@@ -22,6 +23,17 @@ function App() {
           setDragItemIndex={setDragItemIndex}
         />
       ))}
+
+      {displayListModal ? (
+        <NewListModal setDisplayListModal={setDisplayListModal} />
+      ) : (
+        <button
+          className="new-list-btn"
+          onClick={() => setDisplayListModal(true)}
+        >
+          +
+        </button>
+      )}
     </div>
   );
 }
