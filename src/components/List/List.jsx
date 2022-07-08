@@ -64,7 +64,7 @@ const List = ({
           {displayListPopover ? <ListPopover listId={id} /> : null}
         </div>
         <div className="list-body">
-          {cards.map((card, index) => (
+          {cards?.map((card, index) => (
             <Card
               id={card.id}
               {...card}
