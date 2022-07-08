@@ -1,14 +1,12 @@
 const editCardHandler = (data, listId, cardId, cardData) => {
-  const newData = data.map((list) =>
-    list.id === listId
-      ? {
-          ...list,
-          cards: list.cards.map((card) =>
-            card.id === cardId ? cardData : card
-          ),
-        }
+  let newData = data.map((list) =>
+    list.name === cardData.status
+      ? { ...list, cards: [...list.cards, cardData] }
+      : list.id === listId
+      ? { ...list, cards: list.cards.filter((card) => card.id !== cardId) }
       : list
   );
+
   return newData;
 };
 

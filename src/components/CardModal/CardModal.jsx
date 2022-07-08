@@ -12,9 +12,9 @@ const CardModal = ({
 }) => {
   const { state, dispatch } = useData();
   const [newCard, setNewCard] = useState({
-    title: "",
-    description: "",
-    status: "",
+    title,
+    description,
+    status,
   });
 
   const inputHandler = (e) => {
@@ -35,7 +35,7 @@ const CardModal = ({
             className={`card-modal-title ${
               title === "Untitled" ? "card-modal-invalid-title" : ""
             }`}
-            value={newCard.title || title}
+            value={newCard.title}
             onChange={inputHandler}
           ></input>
           <label htmlFor="card-status">Status</label>
@@ -45,7 +45,7 @@ const CardModal = ({
             className="card-status-select"
             onChange={inputHandler}
           >
-            <option value={newCard.status || status}>{status}</option>
+            <option value={newCard.status}>{status}</option>
             {state.map((list) => (
               <option key={list.id} value={list.name}>
                 {list.name}
@@ -59,7 +59,7 @@ const CardModal = ({
           rows="5"
           cols="33"
           placeholder="Enter description for card"
-          value={newCard.description || description}
+          value={newCard.description}
           onChange={inputHandler}
         ></textarea>
         <div className="card-footer">
@@ -67,7 +67,11 @@ const CardModal = ({
             onClick={() =>
               dispatch({
                 type: "EDIT_CARD",
-                payload: { listId, cardId: id, cardData: newCard },
+                payload: {
+                  listId,
+                  cardId: id,
+                  cardData: newCard,
+                },
               })
             }
           >
