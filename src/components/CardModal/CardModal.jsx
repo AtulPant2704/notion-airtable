@@ -32,7 +32,9 @@ const CardModal = ({
         <div className="card-header">
           <input
             name="title"
-            className="card-modal-title"
+            className={`card-modal-title ${
+              title === "Untitled" ? "card-modal-invalid-title" : ""
+            }`}
             value={newCard.title || title}
             onChange={inputHandler}
           ></input>
