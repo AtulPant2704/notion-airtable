@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useData } from "context";
 import { Card } from "components";
 import "./List.css";
+import { ListPopover } from "components/ListPopover/ListPopover";
 
 const List = ({
   id,
@@ -14,6 +15,7 @@ const List = ({
   const { dispatch } = useData();
   const [displayCardInput, setDisplayCardInput] = useState(false);
   const [cardName, setCardName] = useState("");
+  const [displayListPopover, setDisplayListPopover] = useState(false);
 
   const addNewCard = () => {
     dispatch({ type: "ADD_NEW_CARD", payload: { id, cardName } });
@@ -45,8 +47,17 @@ const List = ({
         }
       >
         <div className="list-heading">
-          <p className="list-name">{name}</p>
-          <p className="list-card-count">{cards.length}</p>
+          <div className="list-intro">
+            <p className="list-name">{name}</p>
+            <p className="list-card-count">{cards.length}</p>
+          </div>
+          <button
+            className="list-btn"
+            onClick={() => setDisplayListPopover(!displayListPopover)}
+          >
+            ...
+          </button>
+          {displayListPopover ? <ListPopover listId={id} /> : null}
         </div>
         <div className="list-body">
           {cards.map((card, index) => (

@@ -10,8 +10,15 @@
 .list-heading {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  justify-content: center;
   margin-bottom: 0.9rem;
+  position: relative;
+}
+
+.list-intro {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .list-name,
@@ -29,6 +36,19 @@
 
 .list-card-count {
   color: gray;
+}
+
+.list-btn {
+  margin-left: auto;
+  border-width: 0;
+  background-color: transparent;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
 
 .list-new-card-btn {
