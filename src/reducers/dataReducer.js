@@ -1,4 +1,9 @@
-import { addCardHandler, editCardHandler, deleteCardHandler } from "utils";
+import {
+  addCardHandler,
+  editCardHandler,
+  deleteCardHandler,
+  dragAndDropHandler,
+} from "utils";
 
 const dataReducer = (state, action) => {
   switch (action.type) {
@@ -13,6 +18,11 @@ const dataReducer = (state, action) => {
     case "DELETE_CARD": {
       const { listId, cardId } = action.payload;
       return deleteCardHandler(state, listId, cardId);
+    }
+    case "DRAG_AND_DROP": {
+      const { dragItemIndex, dropItemIndex } = action.payload;
+      console.log(action.payload.from);
+      return dragAndDropHandler(state, dragItemIndex, dropItemIndex);
     }
     default:
       return state;
