@@ -1,9 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useData } from "context";
 import { CardModal } from "components";
 import "./Card.css";
 
 const Card = ({ id, title, description, status, listId }) => {
+  const { state } = useData();
   const [displayCardModal, setDisplayCardModal] = useState(false);
+
+  useEffect(() => {
+    setDisplayCardModal(false);
+  }, [state]);
 
   return (
     <>
@@ -17,7 +23,12 @@ const Card = ({ id, title, description, status, listId }) => {
           listId={listId}
         />
       ) : null}
-      <p className="card-title" onClick={() => setDisplayCardModal(true)}>
+      <p
+        className={`card-title ${
+          title === "Untitled" ? "card-title-invalid" : ""
+        }`}
+        onClick={() => setDisplayCardModal(true)}
+      >
         {title}
       </p>
     </>
