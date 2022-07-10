@@ -64,6 +64,7 @@ const CardModal = ({
         ></textarea>
         <div className="card-footer">
           <button
+            className="card-modal-btn solid-btn"
             onClick={() =>
               dispatch({
                 type: "EDIT_CARD",
@@ -78,6 +79,7 @@ const CardModal = ({
             Save
           </button>
           <button
+            className="card-modal-btn outline-btn"
             onClick={() =>
               dispatch({
                 type: "DELETE_CARD",
