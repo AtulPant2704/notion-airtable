@@ -29,9 +29,17 @@
 }
 
 .list-name {
-  background-color: lightblue;
+  background-color: #d3e5ef;
   padding: 0 5px;
   border-radius: 2px;
+}
+
+.list-name.Red {
+  background-color: #ffe2dd;
+}
+
+.list-name.Green {
+  background-color: #dbeddb;
 }
 
 .list-card-count {

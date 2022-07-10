@@ -8,6 +8,7 @@ import { useEffect } from "react";
 const List = ({
   id,
   name,
+  color,
   cards,
   listIndex,
   dragItemIndex,
@@ -52,7 +53,7 @@ const List = ({
       >
         <div className="list-heading">
           <div className="list-intro">
-            <p className="list-name">{name}</p>
+            <p className={`list-name ${color}`}>{name}</p>
             <p className="list-card-count">{cards.length}</p>
           </div>
           <button
