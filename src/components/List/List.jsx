@@ -13,19 +13,21 @@ const List = ({
   setDragItemIndex,
 }) => {
   const { state, dispatch } = useData();
-  const [displayCardInput, setDisplayCardInput] = useState(false);
+  const [bottomCardInput, setBottomCardInput] = useState(false);
+  const [topCardInput, setTopCardInput] = useState(false);
   const [cardName, setCardName] = useState("");
   const [displayListPopover, setDisplayListPopover] = useState(false);
 
-  const addNewCard = () => {
-    dispatch({ type: "ADD_NEW_CARD", payload: { id, cardName } });
-    setDisplayCardInput(false);
+  const addNewCard = (location) => {
+    dispatch({ type: "ADD_NEW_CARD", payload: { id, cardName, location } });
+    setBottomCardInput(false);
+    setTopCardInput(false);
     setCardName("");
   };
 
-  const cardInputHandler = (e) => {
+  const cardInputHandler = (e, location) => {
     if (e.key === "Enter") {
-      addNewCard();
+      addNewCard(location);
     }
   };
 
@@ -54,15 +56,31 @@ const List = ({
             <p className={`list-name ${color}`}>{name}</p>
             <p className="list-card-count">{cards.length}</p>
           </div>
-          <button
-            className="list-btn"
-            onClick={() => setDisplayListPopover(!displayListPopover)}
-          >
-            ...
-          </button>
+          <div className="list-action-btns">
+            <button
+              className="list-btn"
+              onClick={() => setDisplayListPopover(!displayListPopover)}
+            >
+              ...
+            </button>
+            <button className="list-btn" onClick={() => setTopCardInput(true)}>
+              +
+            </button>
+          </div>
           {displayListPopover ? <ListPopover listId={id} /> : null}
         </div>
         <div className="list-body">
+          {topCardInput ? (
+            <input
+              className="card-input"
+              placeholder="Type a name..."
+              autoFocus
+              value={cardName}
+              onChange={(e) => setCardName(e.target.value)}
+              onKeyDown={(e) => cardInputHandler(e, "top")}
+              onBlur={() => addNewCard("top")}
+            />
+          ) : null}
           {cards?.map((card, index) => (
             <Card
               id={card.id}
@@ -76,20 +94,20 @@ const List = ({
           ))}
         </div>
         <div className="list-footer">
-          {displayCardInput ? (
+          {bottomCardInput ? (
             <input
               className="card-input"
               placeholder="Type a name..."
               autoFocus
               value={cardName}
               onChange={(e) => setCardName(e.target.value)}
-              onKeyDown={cardInputHandler}
-              onBlur={addNewCard}
+              onKeyDown={(e) => cardInputHandler(e, "bottom")}
+              onBlur={() => addNewCard("bottom")}
             />
           ) : null}
           <button
             className="list-new-card-btn"
-            onClick={() => setDisplayCardInput(true)}
+            onClick={() => setBottomCardInput(true)}
           >
             + New
           </button>
