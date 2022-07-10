@@ -1,9 +1,9 @@
 import { v4 as uuid } from "uuid";
 
 const addCardHandler = (data, id, cardName, location) => {
-  let newData = data;
+  let newData;
   if (location === "top") {
-    newData = newData.map((list) =>
+    newData = data.map((list) =>
       list.id === id
         ? {
             ...list,
@@ -20,7 +20,7 @@ const addCardHandler = (data, id, cardName, location) => {
         : list
     );
   } else {
-    newData = newData.map((list) =>
+    newData = data.map((list) =>
       list.id === id
         ? {
             ...list,
