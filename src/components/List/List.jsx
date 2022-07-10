@@ -1,9 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useData } from "context";
-import { Card } from "components";
+import { Card, ListPopover } from "components";
 import "./List.css";
-import { ListPopover } from "components/ListPopover/ListPopover";
-import { useEffect } from "react";
 
 const List = ({
   id,
