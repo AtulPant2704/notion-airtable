@@ -37,21 +37,21 @@ const List = ({
 
   return (
     <>
-      <div
-        className="list"
-        onDragEnter={() =>
-          !cards.length
-            ? dispatch({
-                type: "DRAG_AND_DROP",
-                payload: {
-                  dragItemIndex,
-                  dropItemIndex: { listIndex, cardIndex: 0 },
-                },
-              })
-            : null
-        }
-      >
-        <div className="list-heading">
+      <div className="list">
+        <div
+          className="list-heading"
+          onDragEnter={() =>
+            !cards.length
+              ? dispatch({
+                  type: "DRAG_AND_DROP",
+                  payload: {
+                    dragItemIndex,
+                    dropItemIndex: { listIndex, cardIndex: 0 },
+                  },
+                })
+              : null
+          }
+        >
           <div className="list-intro">
             <p className={`list-name ${color}`}>{name}</p>
             <p className="list-card-count">{cards.length}</p>
