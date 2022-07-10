@@ -13,6 +13,10 @@ function App() {
     localStorage.setItem("data", JSON.stringify(state));
   }, [state]);
 
+  useEffect(() => {
+    setDisplayListPopover("");
+  }, [state]);
+
   return (
     <div className="App">
       {state.map((item, index) => (

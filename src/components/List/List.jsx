@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useData } from "context";
 import { Card, ListPopover } from "components";
 import "./List.css";
@@ -14,7 +14,7 @@ const List = ({
   displayListPopover,
   setDisplayListPopover,
 }) => {
-  const { state, dispatch } = useData();
+  const { dispatch } = useData();
   const [bottomCardInput, setBottomCardInput] = useState(false);
   const [topCardInput, setTopCardInput] = useState(false);
   const [cardName, setCardName] = useState("");
@@ -31,10 +31,6 @@ const List = ({
       addNewCard(location);
     }
   };
-
-  useEffect(() => {
-    setDisplayListPopover("");
-  }, [state]);
 
   return (
     <>
