@@ -32,6 +32,8 @@
   background-color: #d3e5ef;
   padding: 0 5px;
   border-radius: 2px;
+  max-width: 10rem;
+  overflow: hidden;
 }
 
 .list-name.Red {

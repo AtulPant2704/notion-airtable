@@ -30,14 +30,14 @@ const CardModal = ({
       ></div>
       <div className="card-modal">
         <div className="card-header">
-          <input
+          <textarea
             name="title"
             className={`card-modal-title ${
               title === "Untitled" ? "card-modal-invalid-title" : ""
             }`}
             value={newCard.title}
             onChange={inputHandler}
-          ></input>
+          ></textarea>
           <label htmlFor="card-status">Status</label>
           <select
             id="card-status"
