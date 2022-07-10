@@ -5,6 +5,7 @@ import {
   dragAndDropHandler,
   deleteListHandler,
   addListHandler,
+  listColorHandler,
 } from "utils";
 
 const dataReducer = (state, action) => {
@@ -32,6 +33,10 @@ const dataReducer = (state, action) => {
     case "ADD_NEW_LIST": {
       const { listName } = action.payload;
       return addListHandler(state, listName);
+    }
+    case "CHANGE_LIST_COLOR": {
+      const { listId, color } = action.payload;
+      return listColorHandler(state, listId, color);
     }
     default:
       return state;
