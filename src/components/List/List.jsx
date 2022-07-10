@@ -11,12 +11,13 @@ const List = ({
   listIndex,
   dragItemIndex,
   setDragItemIndex,
+  displayListPopover,
+  setDisplayListPopover,
 }) => {
   const { state, dispatch } = useData();
   const [bottomCardInput, setBottomCardInput] = useState(false);
   const [topCardInput, setTopCardInput] = useState(false);
   const [cardName, setCardName] = useState("");
-  const [displayListPopover, setDisplayListPopover] = useState(false);
 
   const addNewCard = (location) => {
     dispatch({ type: "ADD_NEW_CARD", payload: { id, cardName, location } });
@@ -32,7 +33,7 @@ const List = ({
   };
 
   useEffect(() => {
-    setDisplayListPopover(false);
+    setDisplayListPopover("");
   }, [state]);
 
   return (
@@ -59,7 +60,11 @@ const List = ({
           <div className="list-action-btns">
             <button
               className="list-btn"
-              onClick={() => setDisplayListPopover(!displayListPopover)}
+              onClick={() =>
+                displayListPopover === id
+                  ? setDisplayListPopover("")
+                  : setDisplayListPopover(id)
+              }
             >
               ...
             </button>
@@ -67,7 +72,12 @@ const List = ({
               +
             </button>
           </div>
-          {displayListPopover ? <ListPopover listId={id} /> : null}
+          {displayListPopover === id ? (
+            <ListPopover
+              listId={id}
+              setDisplayListPopover={setDisplayListPopover}
+            />
+          ) : null}
         </div>
         <div className="list-body">
           {topCardInput ? (

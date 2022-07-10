@@ -1,13 +1,31 @@
 import { useData } from "context";
 import "./ListPopover.css";
+import { useEffect } from "react";
+import { useRef } from "react";
 
 const colors = ["Red", "Blue", "Green"];
 
-const ListPopover = ({ listId }) => {
+const ListPopover = ({ listId, setDisplayListPopover }) => {
   const { dispatch } = useData();
+  const elementRef = useRef();
+
+  const closePopover = (e) => {
+    if (!elementRef.current.contains(e.target)) {
+      setDisplayListPopover("");
+    }
+  };
+
+  useEffect(() => {
+    setTimeout(() => {
+      document.addEventListener("click", closePopover);
+    }, 0);
+    return () => {
+      document.removeEventListener("click", closePopover);
+    };
+  }, []);
 
   return (
-    <div className="list-popover">
+    <div className="list-popover" ref={elementRef}>
       <li
         className="color-item"
         onClick={() => dispatch({ type: "DELETE_LIST", payload: { listId } })}
