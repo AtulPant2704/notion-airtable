@@ -11,8 +11,8 @@ import {
 const dataReducer = (state, action) => {
   switch (action.type) {
     case "ADD_NEW_CARD": {
-      const { id, cardName } = action.payload;
-      return addCardHandler(state, id, cardName);
+      const { id, cardName, location } = action.payload;
+      return addCardHandler(state, id, cardName, location);
     }
     case "EDIT_CARD": {
       const { listId, cardId, cardData } = action.payload;
